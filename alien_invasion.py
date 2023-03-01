@@ -73,12 +73,6 @@ class AlienIvasion:
         alien.rect.y = alien_height + 2 * alien_height * row_number
         self.aliens.add(alien)
 
-    def _creat_alien(self,alien_number):
-        # 创建一个外星人并将其加入当前行。
-        alien = Alien(self)
-        alien.x = alien_width + 2 * alien_width * alien_number
-        alien.rect.x = alien.x
-        self.aliens.add(alien)
 
     def _check_fleet_edges(self):
         """有外星人到达边缘时采取相应的措施。"""
