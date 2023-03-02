@@ -14,7 +14,7 @@ class Ship:
         self.moving_left = False
 
         # 加载飞船图像并获取其外接矩形。
-        self.image = pygame.image.load('allien_invasion/images/ship.jpg')
+        self.image = pygame.image.load('images\ship.jpg')
         self.image = pygame.transform.scale(self.image,(50,50))
         self.rect = self.image.get_rect()
         # 对于每艘新飞船，都将其放在屏幕底部的中央。
@@ -34,3 +34,8 @@ class Ship:
             self.x -= self.settings.ship_speed
 
         self.rect.x = self.x
+
+    def center_ship(self):
+        """让飞船在屏幕底端居中。"""
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
