@@ -19,3 +19,29 @@ class Button:
 
         # 按钮的标签只需创建一次。
         self._prep_msg(msg)
+
+    def _prep_msg(self, msg):
+        """将msg渲染为图像，并使其在按钮上居中。"""
+        self.msg_image = self.font.render(msg, True, self.text_color,
+                self.button_color)
+        self.msg_image_rect = self.msg_image.get_rect()
+        self.msg_image_rect.center = self.rect.center
+
+    def draw_button(self):
+        # 绘制一个用颜色填充的按钮，再绘制文本。
+        self.screen.fill(self.button_color, self.rect)
+        self.screen.blit(self.msg_image, self.msg_image_rect)
+
+class ButtonDiffcult(Button):
+    def __init__(self, ai_game, msg):
+        #初始化父类属性
+        super().__init__(ai_game, msg)
+
+        #定义一个偏移属性
+        move = int(msg)
+        self.movedistance = 100 * move
+        self.rect.y += self.movedistance
+        # 按钮的标签只需创建一次。
+        self._prep_msg(msg)
+
+    #todo 提供一个y方向偏移量，如果原来的地方有矩形，就移动一下。
